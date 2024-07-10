@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.7.0</app.runtime>
-		<mule.maven.plugin.version>4.2.0</mule.maven.plugin.version>
+		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 	</properties>
 
 	<build>
@@ -29,6 +29,34 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+					<classifier>mule-application</classifier>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>${mule.version}</muleVersion>
+						
+						<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>
+						
+						<environment>${env}</environment>
+						<applicationName>${appname}</applicationName>
+						<businessGroup>${business}</businessGroup>
+						<workers>${workers}</workers>
+						<workerType>${vCore}</workerType>
+						<objectStoreV2>true</objectStoreV2>
+						<!-- <skipDeploymentVerification>true</skipDeploymentVerification>
+						<connectedAppClientId>${app.connectedapp.client_id}</connectedAppClientId>
+						<connectedAppClientSecret>${app.connectedapp.client_secret}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<region>us-gov-west-1</region> -->
+						<!-- <properties>
+							<env>${cloudhub.env}</env>
+							<encrypt.key>${encrypt.key}</encrypt.key>
+							<anypoint.platform.client_id>${app.env.client_id}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${app.env.client_secret}</anypoint.platform.client_secret>
+						</properties> -->
+					</cloudHubDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
